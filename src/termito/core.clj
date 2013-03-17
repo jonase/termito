@@ -5,7 +5,7 @@
             [backtick :refer [template]]))
 
 (defn rule 
-  ([pat sbst] (rewrite-rule pat {} sbst))
+  ([pat sbst] (rule pat {} sbst))
   ([pat  opts sbst] 
      (fn [expr]
        (let [sym (gensym '?)
