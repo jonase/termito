@@ -8,7 +8,7 @@ more features.
 
 Here are some simple arithmetic rules:
 
-```
+```clojure
 (defnc numberc [x] (number? x))
 
 (defrules zero-rules
@@ -36,6 +36,7 @@ Here are some simple arithmetic rules:
                    constant-propagation-rules))
 
 (simplify '(* (+ -1 2) (+ x 0)) rules)
+;; => x
 ```
 
 ## Usage
