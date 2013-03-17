@@ -23,11 +23,11 @@ Here are some simple arithmetic rules:
 
 (defrules constant-propagation-rules
   [(+ ?x ?y)
-   :when [#{?x y} ~numberc]
+   :when [#{?x ?y} ~numberc]
    :with [?sum [?x ?y] ~+]
    ?sum]
   [(* ?x ?y)
-   :when [#{?x y} ~numberc]
+   :when [#{?x ?y} ~numberc]
    :with [?prod [?x ?y] ~*]
    ?prod])
 
@@ -39,12 +39,15 @@ Here are some simple arithmetic rules:
 ;; => x
 ```
 
+More examples can be found in [src/termito/examples](src/termito/examples).
+
 ## Usage
 
-This library is not yet released to Clojars. Stay tuned.
+This library is not yet released to Clojars. If you really want to try
+it you'll have to use core.logic master and not version 0.8.0.
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Jonas Enlund
 
 Distributed under the Eclipse Public License, the same as Clojure.
