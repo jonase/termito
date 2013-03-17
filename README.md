@@ -1,10 +1,46 @@
 # termito
 
-A Clojure library designed to ... well, that part is up to you.
+Termito is a simple term rewriting library for clojure. It is inspired
+by the [kibit](https://github.com/jonase/kibit) rule system but with
+more features.
+
+## Example usage
+
+Here are some simple arithmetic rules:
+
+```
+(defnc numberc [x] (number? x))
+
+(defrules zero-rules
+  [(* ?x 0) 0]
+  [(* 0 ?x) 0])
+
+(defrules identity-rules
+  [(* ?x 1) ?x]
+  [(* 1 ?x) ?x]
+  [(+ ?x 0) ?x]
+  [(+ 0 ?x) ?x])
+
+(defrules constant-propagation-rules
+  [(+ ?x ?y)
+   :when [#{?x y} ~numberc]
+   :with [?sum [?x ?y] ~+]
+   ?sum]
+  [(* ?x ?y)
+   :when [#{?x y} ~numberc]
+   :with [?prod [?x ?y] ~*]
+   ?prod])
+
+(def rules (concat zero-rules 
+                   identity-rules 
+                   constant-propagation-rules))
+
+(simplify '(* (+ -1 2) (+ x 0)) rules)
+```
 
 ## Usage
 
-FIXME
+This library is not yet released to Clojars. Stay tuned.
 
 ## License
 
