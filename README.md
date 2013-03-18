@@ -23,7 +23,7 @@ Here are some simple arithmetic rules:
 (def rules (concat zero-rules 
                    identity-rules) 
 
-(simplify '(+ (* 0 x) (* 1 y) rules)
+(simplify '(+ (* 0 x) (* 1 y)) rules)
 ;; => y
 ```
 
